@@ -489,7 +489,7 @@ def pack_xtc_file(pages, magic, config):
         + _encode_str(author, 64)
         + _encode_str(publisher, 32)
         + _encode_str(language, 16)
-        + struct.pack("<IHH", now_ts, 0xFFFF, 0)   # createTime, coverPage=none, chapterCount=0
+        + struct.pack("<IHH", now_ts, 0xFFFF, 0)   # createTime; 0xFFFF = no cover page (per spec); chapterCount=0
         + struct.pack("<Q", 0)                      # reserved
     )
     assert len(meta) == XTC_META_SIZE, "Metadata block must be 256 bytes"

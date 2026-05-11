@@ -14,6 +14,8 @@ jobs:
   build-epub:
     name: Build EPUB
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
 
     steps:
       - name: Checkout
@@ -43,6 +45,8 @@ jobs:
   build-native:
     name: Build Native (Experimental)
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
 
     steps:
       - name: Checkout

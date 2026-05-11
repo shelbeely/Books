@@ -1,0 +1,176 @@
+/*
+ * epub.css — Xteink X4 e-ink EPUB stylesheet
+ *
+ * Optimized for CrossPoint firmware and grayscale e-ink screens.
+ * No external assets, no JavaScript, no animations, no grid, no flexbox.
+ * Readable even with CSS disabled (semantic HTML carries the structure).
+ *
+ * Target: Xteink X4 (540×960), small screen, no color, no backlight.
+ */
+
+/* --- Reset ---------------------------------------------------------------- */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* --- Document ------------------------------------------------------------- */
+
+body {
+  font-family: serif;
+  font-size: 1em;
+  line-height: 1.6;
+  color: #000;
+  background: #fff;
+  margin: 1.5em;
+  max-width: 38em;
+}
+
+/* --- Headings ------------------------------------------------------------- */
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: sans-serif;
+  font-weight: bold;
+  line-height: 1.2;
+  margin-top: 1.5em;
+  margin-bottom: 0.5em;
+  page-break-after: avoid;
+}
+
+h1 { font-size: 2em; }
+h2 { font-size: 1.5em; }
+h3 { font-size: 1.25em; }
+h4 { font-size: 1.1em; }
+h5, h6 { font-size: 1em; }
+
+/* First heading on a page does not need top spacing. */
+h1:first-child,
+h2:first-child,
+h3:first-child {
+  margin-top: 0;
+}
+
+/* H1 starts a new page (cover, chapter headings). */
+h1 {
+  page-break-before: always;
+}
+
+/* The very first h1 in the document should not force a blank opening page. */
+body > h1:first-child,
+section:first-child > h1:first-child {
+  page-break-before: auto;
+}
+
+/* --- Paragraphs ----------------------------------------------------------- */
+
+p {
+  margin-top: 0;
+  margin-bottom: 0.75em;
+}
+
+/* --- Links ---------------------------------------------------------------- */
+
+/* Black underlined links — visible without colour, usable on e-ink. */
+a {
+  color: #000;
+  text-decoration: underline;
+}
+
+/* --- Images --------------------------------------------------------------- */
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 1em auto;
+}
+
+/* --- Lists ---------------------------------------------------------------- */
+
+ul, ol {
+  margin: 0.75em 0 0.75em 2em;
+}
+
+li {
+  margin-bottom: 0.25em;
+}
+
+/* --- Blockquotes ---------------------------------------------------------- */
+
+blockquote {
+  margin: 1em 2em;
+  border-left: 3px solid #000;
+  padding-left: 1em;
+}
+
+/* --- Code ----------------------------------------------------------------- */
+
+pre, code {
+  font-family: monospace;
+  font-size: 0.9em;
+}
+
+pre {
+  margin: 1em 0;
+  padding: 0.75em;
+  border: 1px solid #000;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+/* --- Horizontal Rule ------------------------------------------------------ */
+
+hr {
+  border: none;
+  border-top: 1px solid #000;
+  margin: 1.5em 0;
+}
+
+/* --- Tables --------------------------------------------------------------- */
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1em 0;
+}
+
+th, td {
+  border: 1px solid #000;
+  padding: 0.4em 0.6em;
+  text-align: left;
+  vertical-align: top;
+}
+
+th {
+  font-weight: bold;
+  background: #e8e8e8;
+}
+
+/* --- Inline emphasis ------------------------------------------------------ */
+
+strong { font-weight: bold; }
+em     { font-style: italic; }
+
+/* --- Print / e-ink media -------------------------------------------------- */
+
+@media print {
+  body {
+    margin: 0;
+    max-width: none;
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  a[href]::after {
+    content: " (" attr(href) ")";
+    font-size: 0.8em;
+  }
+
+  a[href^="#"]::after {
+    content: "";
+  }
+}

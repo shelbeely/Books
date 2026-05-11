@@ -1,0 +1,11 @@
+title: "My Zine"
+author: "Your Name"
+language: "en"
+publisher: ""
+description: "A zine for the Xteink X4 running CrossPoint firmware."
+
+# Xteink X4 display resolution targeted by CrossPoint firmware.
+# Adjust if your device has a different resolution.
+display:
+  width: 540
+  height: 960
